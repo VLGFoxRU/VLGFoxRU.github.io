@@ -1,0 +1,479 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1E90FF;
+    --text-color: #000;
+    --bg-color: #fff;
+    --light-gray: #f5f5f5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+/* Шапка */
+header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--light-gray);
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--primary-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* Основной контент */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+    scroll-margin-top: 80px;
+}
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* О мне */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-photo {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.2);
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.about-text {
+    animation: slideInRight 0.8s ease-out;
+    text-align: justify;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Навыки */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    background-color: var(--light-gray);
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.skill-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.15);
+}
+
+.skill-card p {
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Опыт */
+.experience-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--primary-color);
+}
+
+.timeline-item {
+    margin-left: 40px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--bg-color);
+}
+
+.timeline-item h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.timeline-item .date {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    font-size: 14px;
+    margin: 0;
+    color: #666;
+}
+
+/* Примеры работ */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.portfolio-card {
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(30, 144, 255, 0.2);
+}
+
+.portfolio-card-header {
+    background: linear-gradient(135deg, var(--primary-color), #0066cc);
+    color: white;
+    padding: 20px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.portfolio-card-header h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.portfolio-card-body {
+    padding: 20px;
+}
+
+.portfolio-card-body p {
+    font-size: 13px;
+    margin: 8px 0;
+    color: #666;
+}
+
+.portfolio-card-body a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.portfolio-card-body a:hover {
+    text-decoration: underline;
+}
+
+.portfolio-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--primary-color);
+}
+
+/* Контакты */
+.contacts-container {
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover .contact-icon {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.contact-link:hover p {
+    color: var(--primary-color);
+}
+
+.contact-link p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/* Подвал */
+footer {
+    background-color: var(--light-gray);
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.footer-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.footer-contact-icon {
+    font-size: 18px;
+    display: inline-block;
+    min-width: 20px;
+    color: var(--text-color);
+    transition: color 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-contact-text {
+    font-weight: 550;
+    color: var(--primary-color);
+}
+
+.footer-contact-tag {
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.footer-contact-link:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+}
+
+.footer-contact-link:hover .footer-contact-icon {
+    color: var(--primary-color);
+}
+
+.footer-contact-link:hover .footer-contact-tag {
+    color: var(--primary-color);
+}
+
+.footer-contact-link:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Анимации */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in-section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .about-container,
+    .experience-container {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    section h2 {
+        font-size: 28px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
